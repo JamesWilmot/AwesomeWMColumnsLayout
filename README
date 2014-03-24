@@ -1,0 +1,62 @@
+/* Author: James Wilmot
+ * Date: March 2014 */
+
+CONTENTS OF THIS FILE
+---------------------
+ * Introduction
+ * Installation
+ * Roadmap
+ * Maintainers
+
+INTRODUCTION
+------------
+This layout is an attempt to efficiently utilise horizontal screen space in the
+Awesome WM window manager. Targets widescreen monitors especially. 
+
+Layout divides screen space (working area) into equal width columns. The clients
+(windows in the current screen) are divided equally into those columns with
+equal horizontal space for each client in a column. If there are remainder
+clients (ie clients modulo number columns is not equal to zero: 10 clients in 3
+columns), these clients are added one-by-one to the rightmost columns until
+there are no more remainder clients. 
+
+Corner behaviour: if there are less clients than columns ie in three column
+mode, the layout will change such that the number of columns equals the number
+of clients. Minimises wasted horizontal space.   
+
+Layout currently has two modes: two and three columns. Infinitely
+expandable to arbitrary number of columns.     
+
+Currently in alpha so if using this layout blows up in your face I am in no way
+responsible! You have been warned! :P
+
+INSTALLATION
+------------
+Note: <install dir> refers to the Awesome WM install directory. On Ubuntu 12.04
+this is /usr/share/awesome.
+
+ * copy 'columns.lua' file into '<install dir>/lib/awful/layout/suit'
+ * open '<install dir>/lib/awful/layout/suit/init.lua'
+    - add 'require("awful.layout.suit.columns")'
+ * copy 'default/threecolsw.png' and 'default/twocolsw.png' into:
+    '<install dir>/themes/default/layouts'
+ * open '<install dir>/themes/default/theme.lua'
+    - find 'theme.layout_*' near bottom of file
+    - add: 
+    'theme.layout_twocols = "<install dir>/themes/default/layouts/twocolsw.png"' 
+    'theme.layout_threecols = "<install dir>/themes/default/layouts/threecolsw.png"' 
+ * add layout to '~/.config/awesome/rc.lua':
+    - find 'layouts' definition
+    - add:
+    'awful.layout.suit.columns.two,'   
+    'awful.layout.suit.columns.three'   
+
+ROADMAP
+-------
+ * include in default Awesome WM installation
+ * layout icons for all included themes
+ * ability to resize master window 
+
+MAINTAINERS
+-----------
+ * James Wilmot <james@an.isotropic.me>
