@@ -12,6 +12,8 @@ local io = io
 
 module("awful.layout.suit.columns")
 
+-- stuff for debugging
+
 function dbg(vars)
     local text = ""
     for i=1, #vars do text = text .. vars[i] .. " | " end
