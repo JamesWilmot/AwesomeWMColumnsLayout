@@ -7,6 +7,7 @@ local ipairs = ipairs
 local client = require("awful.client")
 local math = math
 local naughty = require("naughty")
+local beautiful = require("beautiful")
 --local write = io.stderr:write
 local io = io
 
@@ -68,7 +69,7 @@ local function cols_arrange(p, cols)
     local col_cls = {} 
     local col_geom = {}
 
-    col_geom[width] = math.ceil(wa[width]/cols)
+    col_geom[width] = math.ceil(wa[width]/cols) - ( cols * beautiful.border_width )
     col_geom[height] = wa[height]
     col_geom[x] = wa[x] 
     col_geom[y] = wa[y]  
